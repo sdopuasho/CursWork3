@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="80459c8c20a943f1ae1ef8c9851b419c" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="GANEntity.Consumable" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.DeliveryOfConsumables" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.History" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.Role" Width="1.5" PointX="0.875" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.StatusOfConsumableIssued" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.StatusOfWorker" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.SuplierStatus" Width="1.5" PointX="14.875" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.SuppliesInDelivery" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.Supply" Width="1.5" PointX="13.125" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.sysdiagrams" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.TheSupplier" Width="1.5" PointX="11.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.TypeOfConsumable" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.Unit" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.Warehouse" Width="1.5" PointX="10.375" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GANEntity.Workers" Width="1.5" PointX="3.125" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="GANEntity.FK__Consumabl__FK_Ty__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK__Consumabl__FK_Un__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK__DeliveryO__FK_Co__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK__SuppliesI__FK_Co__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK__DeliveryO__FK_St__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK__DeliveryO__FK_Wo__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK__Workers__FK_Role__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK_Workers_StatusOfWorker" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK_TheSupplier_SuplierStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK__SuppliesI__FK_Su__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK__Supply__FK_TheSu__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="GANEntity.FK__Supply__FK_Wareh__5441852A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

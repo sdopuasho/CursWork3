@@ -1,0 +1,28 @@
+﻿<Window x:Class="GANCursProject681.Window_Folder.MatOut"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GANCursProject681.Window_Folder"
+        mc:Ignorable="d"
+        Title="Учет материаловv" Height="386.066" Width="165.574" Style="{StaticResource WindowStyle}">
+    <Grid>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" x:Name="Lname" Height="23" Margin="15,94,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" x:Name="quant" Height="23" Margin="15,265,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" x:Name="Fname" Height="23" Margin="15,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Style="{StaticResource ComboBoxFlatStyle}" x:Name="Cmbbx1" HorizontalAlignment="Left" Margin="15,41,0,0" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding OFR}" DisplayMemberPath="Name"
+                  SelectedValue="{Binding Path=id}" />
+        <Label Content="Расходный материал" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Фамлия сотрудника" HorizontalAlignment="Left" Margin="15,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.503,2.21"/>
+        <Label Content="Имя сотрудника" HorizontalAlignment="Left" Margin="15,122,0,0" VerticalAlignment="Top"/>
+        <ComboBox Style="{StaticResource ComboBoxFlatStyle}" x:Name="Cmbbx2" HorizontalAlignment="Left" Margin="15,207,0,0" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding ItemsForRoles}" DisplayMemberPath="Name"
+                  SelectedValue="{Binding Path=id}" />
+        <Label Content="Должность" HorizontalAlignment="Left" Margin="15,176,0,0" VerticalAlignment="Top"/>
+        <Label Content="Количество" HorizontalAlignment="Left" Margin="15,234,0,0" VerticalAlignment="Top"/>
+        <Button Style="{StaticResource NewGameButtonStyle}" Content="Отмена" HorizontalAlignment="Left" Margin="15,318,0,0" VerticalAlignment="Top" Width="119" Click="Button_Click"/>
+        <Button Style="{StaticResource NewGameButtonStyle}" Content="Оформить" HorizontalAlignment="Left" Margin="15,293,0,0" VerticalAlignment="Top" Width="119" Click="Button_Click_1"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GANEntity" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Consumable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FK_TypeOfConsumable_id" Type="Int32" Nullable="false" />
+    <Property Name="FK_Unit_id" Type="Int32" Nullable="false" />
+    <Property Name="InventoryNumber" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TypeOfConsumable" Relationship="Self.FK__Consumabl__FK_Ty__52593CB8" FromRole="Consumable" ToRole="TypeOfConsumable" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK__Consumabl__FK_Un__534D60F1" FromRole="Consumable" ToRole="Unit" />
+    <NavigationProperty Name="DeliveryOfConsumables" Relationship="Self.FK__DeliveryO__FK_Co__4F7CD00D" FromRole="Consumable" ToRole="DeliveryOfConsumables" />
+    <NavigationProperty Name="SuppliesInDelivery" Relationship="Self.FK__SuppliesI__FK_Co__571DF1D5" FromRole="Consumable" ToRole="SuppliesInDelivery" />
+  </EntityType>
+  <EntityType Name="DeliveryOfConsumables">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_Consumable_id" Type="Int32" Nullable="false" />
+    <Property Name="FK_Worker_id" Type="Int32" Nullable="false" />
+    <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="FK_StatusOfConsumableIssued_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Consumable" Relationship="Self.FK__DeliveryO__FK_Co__4F7CD00D" FromRole="DeliveryOfConsumables" ToRole="Consumable" />
+    <NavigationProperty Name="StatusOfConsumableIssued" Relationship="Self.FK__DeliveryO__FK_St__5070F446" FromRole="DeliveryOfConsumables" ToRole="StatusOfConsumableIssued" />
+    <NavigationProperty Name="Workers" Relationship="Self.FK__DeliveryO__FK_Wo__5165187F" FromRole="DeliveryOfConsumables" ToRole="Workers" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPos" Type="Int32" />
+    <Property Name="OperationName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LevelOfAccess" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Workers" Relationship="Self.FK__Workers__FK_Role__4E88ABD4" FromRole="Role" ToRole="Workers" />
+  </EntityType>
+  <EntityType Name="StatusOfConsumableIssued">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DeliveryOfConsumables" Relationship="Self.FK__DeliveryO__FK_St__5070F446" FromRole="StatusOfConsumableIssued" ToRole="DeliveryOfConsumables" />
+  </EntityType>
+  <EntityType Name="StatusOfWorker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Workers" Relationship="Self.FK_Workers_StatusOfWorker" FromRole="StatusOfWorker" ToRole="Workers" />
+  </EntityType>
+  <EntityType Name="SuplierStatus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="TheSupplier" Relationship="Self.FK_TheSupplier_SuplierStatus" FromRole="SuplierStatus" ToRole="TheSupplier" />
+  </EntityType>
+  <EntityType Name="SuppliesInDelivery">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_Supply_id" Type="Int32" Nullable="false" />
+    <Property Name="FK_Consumable_id" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="DateOfManufacture" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Consumable" Relationship="Self.FK__SuppliesI__FK_Co__571DF1D5" FromRole="SuppliesInDelivery" ToRole="Consumable" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK__SuppliesI__FK_Su__5629CD9C" FromRole="SuppliesInDelivery" ToRole="Supply" />
+  </EntityType>
+  <EntityType Name="Supply">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_WarehouseNumber_id" Type="Int32" Nullable="false" />
+    <Property Name="FK_TheSuplier_id" Type="Int32" Nullable="false" />
+    <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="SuppliesInDelivery" Relationship="Self.FK__SuppliesI__FK_Su__5629CD9C" FromRole="Supply" ToRole="SuppliesInDelivery" />
+    <NavigationProperty Name="TheSupplier" Relationship="Self.FK__Supply__FK_TheSu__5535A963" FromRole="Supply" ToRole="TheSupplier" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK__Supply__FK_Wareh__5441852A" FromRole="Supply" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TheSupplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TheContactPerson" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LegalAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FK_SuplierStatus_id" Type="Int32" />
+    <NavigationProperty Name="SuplierStatus" Relationship="Self.FK_TheSupplier_SuplierStatus" FromRole="TheSupplier" ToRole="SuplierStatus" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK__Supply__FK_TheSu__5535A963" FromRole="TheSupplier" ToRole="Supply" />
+  </EntityType>
+  <EntityType Name="TypeOfConsumable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Consumable" Relationship="Self.FK__Consumabl__FK_Ty__52593CB8" FromRole="TypeOfConsumable" ToRole="Consumable" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Consumable" Relationship="Self.FK__Consumabl__FK_Un__534D60F1" FromRole="Unit" ToRole="Consumable" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WarehouseNumber" Type="Int32" Nullable="false" />
+    <Property Name="TheContactPerson" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LegalAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AmountOfConsumable" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Supply" Relationship="Self.FK__Supply__FK_Wareh__5441852A" FromRole="Warehouse" ToRole="Supply" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FK_Role_id" Type="Int32" Nullable="false" />
+    <Property Name="FK_StatusOfWorker_id" Type="Int32" />
+    <NavigationProperty Name="DeliveryOfConsumables" Relationship="Self.FK__DeliveryO__FK_Wo__5165187F" FromRole="Workers" ToRole="DeliveryOfConsumables" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__Workers__FK_Role__4E88ABD4" FromRole="Workers" ToRole="Role" />
+    <NavigationProperty Name="StatusOfWorker" Relationship="Self.FK_Workers_StatusOfWorker" FromRole="Workers" ToRole="StatusOfWorker" />
+  </EntityType>
+  <Association Name="FK__Consumabl__FK_Ty__52593CB8">
+    <End Role="TypeOfConsumable" Type="Self.TypeOfConsumable" Multiplicity="1" />
+    <End Role="Consumable" Type="Self.Consumable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfConsumable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Consumable">
+        <PropertyRef Name="FK_TypeOfConsumable_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Consumabl__FK_Un__534D60F1">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Consumable" Type="Self.Consumable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Consumable">
+        <PropertyRef Name="FK_Unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeliveryO__FK_Co__4F7CD00D">
+    <End Role="Consumable" Type="Self.Consumable" Multiplicity="1" />
+    <End Role="DeliveryOfConsumables" Type="Self.DeliveryOfConsumables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DeliveryOfConsumables">
+        <PropertyRef Name="FK_Consumable_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SuppliesI__FK_Co__571DF1D5">
+    <End Role="Consumable" Type="Self.Consumable" Multiplicity="1" />
+    <End Role="SuppliesInDelivery" Type="Self.SuppliesInDelivery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumable">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SuppliesInDelivery">
+        <PropertyRef Name="FK_Consumable_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeliveryO__FK_St__5070F446">
+    <End Role="StatusOfConsumableIssued" Type="Self.StatusOfConsumableIssued" Multiplicity="1" />
+    <End Role="DeliveryOfConsumables" Type="Self.DeliveryOfConsumables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusOfConsumableIssued">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DeliveryOfConsumables">
+        <PropertyRef Name="FK_StatusOfConsumableIssued_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeliveryO__FK_Wo__5165187F">
+    <End Role="Workers" Type="Self.Workers" Multiplicity="1" />
+    <End Role="DeliveryOfConsumables" Type="Self.DeliveryOfConsumables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DeliveryOfConsumables">
+        <PropertyRef Name="FK_Worker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Workers__FK_Role__4E88ABD4">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Workers">
+        <PropertyRef Name="FK_Role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Workers_StatusOfWorker">
+    <End Role="StatusOfWorker" Type="Self.StatusOfWorker" Multiplicity="0..1" />
+    <End Role="Workers" Type="Self.Workers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusOfWorker">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Workers">
+        <PropertyRef Name="FK_StatusOfWorker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TheSupplier_SuplierStatus">
+    <End Role="SuplierStatus" Type="Self.SuplierStatus" Multiplicity="0..1" />
+    <End Role="TheSupplier" Type="Self.TheSupplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SuplierStatus">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TheSupplier">
+        <PropertyRef Name="FK_SuplierStatus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SuppliesI__FK_Su__5629CD9C">
+    <End Role="Supply" Type="Self.Supply" Multiplicity="1" />
+    <End Role="SuppliesInDelivery" Type="Self.SuppliesInDelivery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supply">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SuppliesInDelivery">
+        <PropertyRef Name="FK_Supply_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Supply__FK_TheSu__5535A963">
+    <End Role="TheSupplier" Type="Self.TheSupplier" Multiplicity="1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TheSupplier">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="FK_TheSuplier_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Supply__FK_Wareh__5441852A">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Supply">
+        <PropertyRef Name="FK_WarehouseNumber_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ANDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Consumable" EntityType="Self.Consumable" />
+    <EntitySet Name="DeliveryOfConsumables" EntityType="Self.DeliveryOfConsumables" />
+    <EntitySet Name="History" EntityType="Self.History" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="StatusOfConsumableIssued" EntityType="Self.StatusOfConsumableIssued" />
+    <EntitySet Name="StatusOfWorker" EntityType="Self.StatusOfWorker" />
+    <EntitySet Name="SuplierStatus" EntityType="Self.SuplierStatus" />
+    <EntitySet Name="SuppliesInDelivery" EntityType="Self.SuppliesInDelivery" />
+    <EntitySet Name="Supply" EntityType="Self.Supply" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TheSupplier" EntityType="Self.TheSupplier" />
+    <EntitySet Name="TypeOfConsumable" EntityType="Self.TypeOfConsumable" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" />
+    <EntitySet Name="Warehouse" EntityType="Self.Warehouse" />
+    <EntitySet Name="Workers" EntityType="Self.Workers" />
+    <AssociationSet Name="FK__Consumabl__FK_Ty__52593CB8" Association="Self.FK__Consumabl__FK_Ty__52593CB8">
+      <End Role="TypeOfConsumable" EntitySet="TypeOfConsumable" />
+      <End Role="Consumable" EntitySet="Consumable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Consumabl__FK_Un__534D60F1" Association="Self.FK__Consumabl__FK_Un__534D60F1">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="Consumable" EntitySet="Consumable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeliveryO__FK_Co__4F7CD00D" Association="Self.FK__DeliveryO__FK_Co__4F7CD00D">
+      <End Role="Consumable" EntitySet="Consumable" />
+      <End Role="DeliveryOfConsumables" EntitySet="DeliveryOfConsumables" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SuppliesI__FK_Co__571DF1D5" Association="Self.FK__SuppliesI__FK_Co__571DF1D5">
+      <End Role="Consumable" EntitySet="Consumable" />
+      <End Role="SuppliesInDelivery" EntitySet="SuppliesInDelivery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeliveryO__FK_St__5070F446" Association="Self.FK__DeliveryO__FK_St__5070F446">
+      <End Role="StatusOfConsumableIssued" EntitySet="StatusOfConsumableIssued" />
+      <End Role="DeliveryOfConsumables" EntitySet="DeliveryOfConsumables" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeliveryO__FK_Wo__5165187F" Association="Self.FK__DeliveryO__FK_Wo__5165187F">
+      <End Role="Workers" EntitySet="Workers" />
+      <End Role="DeliveryOfConsumables" EntitySet="DeliveryOfConsumables" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Workers__FK_Role__4E88ABD4" Association="Self.FK__Workers__FK_Role__4E88ABD4">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Workers" EntitySet="Workers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Workers_StatusOfWorker" Association="Self.FK_Workers_StatusOfWorker">
+      <End Role="StatusOfWorker" EntitySet="StatusOfWorker" />
+      <End Role="Workers" EntitySet="Workers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TheSupplier_SuplierStatus" Association="Self.FK_TheSupplier_SuplierStatus">
+      <End Role="SuplierStatus" EntitySet="SuplierStatus" />
+      <End Role="TheSupplier" EntitySet="TheSupplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SuppliesI__FK_Su__5629CD9C" Association="Self.FK__SuppliesI__FK_Su__5629CD9C">
+      <End Role="Supply" EntitySet="Supply" />
+      <End Role="SuppliesInDelivery" EntitySet="SuppliesInDelivery" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Supply__FK_TheSu__5535A963" Association="Self.FK__Supply__FK_TheSu__5535A963">
+      <End Role="TheSupplier" EntitySet="TheSupplier" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Supply__FK_Wareh__5441852A" Association="Self.FK__Supply__FK_Wareh__5441852A">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Supply" EntitySet="Supply" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

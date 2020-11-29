@@ -1,0 +1,31 @@
+﻿<Window x:Class="GANCursProject681.Window_Folder.AddNewSot"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GANCursProject681.Window_Folder"
+        mc:Ignorable="d"
+        Title="Учет материалов" Style="{StaticResource WindowStyle}" Height="377.458" Width="262.706">
+    <Grid>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" x:Name="LNameTxt" Height="23" Margin="120,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" x:Name="FNameTxt" Style="{StaticResource TextBoxStyle}" Height="23" Margin="120,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" x:Name="MNameTxt" Height="23" Margin="120,100,0,0" Style="{StaticResource TextBoxStyle}" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox  HorizontalAlignment="Left" x:Name="PhoneTxt" Height="23" Margin="120,128,0,0" TextWrapping="Wrap" Text="" Style="{StaticResource TextBoxStyle}" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Style="{StaticResource ComboBoxFlatStyle}" HorizontalAlignment="Left"  x:Name="CmbBox_Role" Margin="120,187,0,0" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding ItemsForRoles}" DisplayMemberPath="Name"
+                  SelectedValue="{Binding Path=id}" />
+        <Button Content="Добавить"  HorizontalAlignment="Left" Margin="120,214,0,0" VerticalAlignment="Top" Width="120" Height="22" Click="Button_Click"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.412,-0.521"/>
+        <Label Content="Номер телефона" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top"/>
+        <Label Content="Должность"  HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top"/>
+        <Label Content="Добавление сотрудника" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Height="33" Width="230"/>
+        <Button x:Name="Cancel" Content="Отмена" HorizontalAlignment="Left" Margin="120,241,0,0" VerticalAlignment="Top" Width="120" Click="Cancel_Click"/>
+        <Popup x:Name="popup1" StaysOpen="False" Placement="Mouse" MaxWidth="180"
+         AllowsTransparency="True"  />
+        <TextBlock x:Name="PpTxt" TextWrapping="Wrap" Background="White" Opacity="0.8" Margin="10,266,45,18" Text="" />
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" x:Name="EmailTxt" Height="23" Margin="120,159,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="10,159,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

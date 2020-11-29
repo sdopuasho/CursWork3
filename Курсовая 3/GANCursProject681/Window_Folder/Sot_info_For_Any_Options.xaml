@@ -1,0 +1,30 @@
+﻿<Window x:Class="GANCursProject681.Window_Folder.Sot_info_For_Any_Options"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GANCursProject681.Window_Folder"
+        mc:Ignorable="d"
+        Title="Учет материалов" Height="121.212" Width="917.088" Style="{StaticResource WindowStyle}">
+    <Grid>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Height="23" x:Name="LName" Margin="10,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Height="23" x:Name="FName" Margin="135,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Height="23" x:Name="MName" Margin="260,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="2.275,0.42"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Height="23" x:Name="Phon" Margin="385,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Height="23" x:Name="Pos" Margin="635,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Height="23" x:Name="LelelOfDostup" Margin="762,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Style="{StaticResource NewGameButtonStyle}" Content="Назад" x:Name="btn_back" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="135,8,0,0" VerticalAlignment="Top"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="260,7,0,0" VerticalAlignment="Top"/>
+        <Label Content="Номер телефона" HorizontalAlignment="Left" Margin="385,8,0,0" VerticalAlignment="Top"/>
+        <Label Content="Должность" HorizontalAlignment="Left" Margin="637,7,0,0" VerticalAlignment="Top"/>
+        <Label Content="Уровень доступа" HorizontalAlignment="Left" Margin="762,7,0,0" VerticalAlignment="Top"/>
+        <Button Style="{StaticResource NewGameButtonStyle}" Content="Обновить" x:Name="btn_Update" HorizontalAlignment="Left" Margin="93,60,0,0" VerticalAlignment="Top" Width="75" Click="Update_Click"/>
+        <Popup x:Name="popup1" StaysOpen="False" Placement="Mouse" MaxWidth="180"
+         AllowsTransparency="True" Margin="173,61,30,9"  />
+        <TextBlock x:Name="PpTxt" TextWrapping="Wrap" Background="White" Opacity="0.8"  Text="" Margin="173,61,30,9" />
+        <TextBox Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Height="23" x:Name="EmailTxt" Margin="510,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="505,10,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
